@@ -1,0 +1,14 @@
+@model IEnumerable<Tourism.User>
+
+<h2 class="wr">Список користувачів</h2>
+<table class="table wr">
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.UserName</td>
+            <td>
+                <a class="btn btn-sm btn-light" asp-action="Edit" asp-route-userid="@user.Id">Права доступу</a>
+            </td>
+        </tr>
+    }
+</table>

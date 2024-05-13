@@ -1,0 +1,107 @@
+@model Tourism.City
+
+@{
+    IEnumerable<Tourism.Tour> Tours  = ViewData["Tours"] as IEnumerable<Tourism.Tour>;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div class="card w-100 mb-4">
+        <div class="card-body">
+            <div>
+                <div class="row space-between">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2>@Model.Name</h2>
+                        @if(User.IsInRole("admin"))
+                        {
+                            <div class="d-flex">
+                                <a asp-action="Delete" asp-route-id="@Model.CityId" class="btn btn-danger me-2">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@Model.CityId" class="btn btn-warning me-2">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+                
+                @if(!string.IsNullOrEmpty(Model.Info))
+                {
+                    <hr />
+                    <div>
+                        @Html.Raw(Model.Info)
+                    </div>
+                    <br>
+                }
+            </div>
+        </div>
+    </div>
+
+    @if(Tours.Count() > 0)
+    {
+        <h2><p>Актуальні тури:</p></h2>
+        @foreach (var item in Tours) 
+        {
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-sm-4">
+                        <a asp-action="Details" asp-controller="Tour" asp-route-id="@item.TourId">
+                            <img src="@item.MainPhoto" class="img-fluid rounded-start object-fit-cover h-100" alt="@item.Name">
+                        </a>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="card-body">
+                            <a asp-action="Details" asp-controller="Tour" asp-route-id="@item.TourId" class="text-decoration-none">
+                                <h5 class="card-title" style="margin: 15px;">@item.Name</h5>
+                            </a>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <strong>Місто:</strong> @(item.City?.Name ?? "N/A")
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Категорія:</strong> @(item.Category?.Name ?? "N/A")
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Ціна:</strong> @(item.Price.HasValue ? $"{item.Price:C}" : "N/A")
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Початок:</strong> @(item.StartDate?.ToString("yyyy.MM.dd hh:mm") ?? "N/A")
+                                </li>
+                                @* <li class="list-group-item">
+                                    <strong>Лишилося місць:</strong> @(item.AvaibleTickets.HasValue ? item.AvaibleTickets.Value.ToString() : "N/A")
+                                </li> *@
+                                @* <strong></strong> @(item.Category?.Name ?? "N/A") <br>
+                                <strong></strong> @(item.Price.HasValue ? $"{item.Price:C}" : "N/A") <br>
+                                <strong></strong> @(item.StartDate?.ToString("yyyy-MM-dd") ?? "N/A") - @(item.EndDate?.ToString("yyyy-MM-dd") ?? "N/A") <br>
+                                <strong></strong> @(item.Capacity.HasValue ? item.Capacity.Value.ToString() : "N/A") <br>
+                                <strong></strong> @(item.AvaibleTickets.HasValue ? item.AvaibleTickets.Value.ToString() : "N/A") *@
+                            </ul>
+                            <div class="d-flex justify-content-end">
+                                @if(User.IsInRole("admin") || User.IsInRole("guide"))
+                                {
+                                    <a asp-action="Delete" asp-controller="Tour" asp-route-id="@item.TourId" class="btn btn-danger me-2">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                    <a asp-action="Edit" asp-controller="Tour" asp-route-id="@item.TourId" class="btn btn-warning me-2">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+                                }
+                                <a asp-action="Details" asp-controller="Tour" asp-route-id="@item.TourId" class="btn btn-info me-2 ">
+                                    <i class="bi bi-arrows-fullscreen"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</body>
+</html>

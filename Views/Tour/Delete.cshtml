@@ -1,0 +1,35 @@
+@model Tourism.Tour
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Видалення туру</title>
+</head>
+<body>
+
+<div class="card w-100 mb-4">
+    <div class="card-body">
+        <div>
+            <div class="row space-between">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Ви впевнені, що хочете видалити цей тур?</h2>
+
+                <div class="d-flex">
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="TourId" />
+                        <input type="submit" value="Так" class="btn btn-danger" />
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+     @await Html.PartialAsync("Details", Model);
+</div>
+</body>
+</html>

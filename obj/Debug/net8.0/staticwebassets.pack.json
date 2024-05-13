@@ -1,0 +1,349 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Tourism.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Tourism.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\Categories\\MainPhotos\\01ba3188-b38f-4fca-884f-0747140426b1_wallstreet-580.webp",
+      "PackagePath": "staticwebassets\\Categories\\MainPhotos\\01ba3188-b38f-4fca-884f-0747140426b1_wallstreet-580.webp"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\Categories\\MainPhotos\\12dc55fa-069a-4bdb-8547-33f173ee72a6_5c461fc7-a880-4c6a-8f19-cd57b26a21c0.png",
+      "PackagePath": "staticwebassets\\Categories\\MainPhotos\\12dc55fa-069a-4bdb-8547-33f173ee72a6_5c461fc7-a880-4c6a-8f19-cd57b26a21c0.png"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\Categories\\MainPhotos\\3ca90e2d-ea15-490d-867f-b20a120584b4_image_2024-05-06_03-58-57.png",
+      "PackagePath": "staticwebassets\\Categories\\MainPhotos\\3ca90e2d-ea15-490d-867f-b20a120584b4_image_2024-05-06_03-58-57.png"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\Categories\\MainPhotos\\54abc74a-fa67-4839-8ba2-dfb8ee3d3997_Злий_репер_зеник.jpg",
+      "PackagePath": "staticwebassets\\Categories\\MainPhotos\\54abc74a-fa67-4839-8ba2-dfb8ee3d3997_Злий_репер_зеник.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\Categories\\MainPhotos\\8377a874-9229-44af-a469-d48b72e04fc4_1aa1blank.jpg",
+      "PackagePath": "staticwebassets\\Categories\\MainPhotos\\8377a874-9229-44af-a469-d48b72e04fc4_1aa1blank.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\Categories\\MainPhotos\\a0ead6fd-e840-4b3e-ac17-557430b7c8a5_Usecasediagram-Page1(1).png",
+      "PackagePath": "staticwebassets\\Categories\\MainPhotos\\a0ead6fd-e840-4b3e-ac17-557430b7c8a5_Usecasediagram-Page1(1).png"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\Users\\ProfilePics\\17f712d8-c8ab-4012-b796-c8f237211a00_5c461fc7-a880-4c6a-8f19-cd57b26a21c0.png",
+      "PackagePath": "staticwebassets\\Users\\ProfilePics\\17f712d8-c8ab-4012-b796-c8f237211a00_5c461fc7-a880-4c6a-8f19-cd57b26a21c0.png"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\Users\\ProfilePics\\21bf73a1-511a-4082-991b-640773422100_image_2024-05-06_03-58-57.png",
+      "PackagePath": "staticwebassets\\Users\\ProfilePics\\21bf73a1-511a-4082-991b-640773422100_image_2024-05-06_03-58-57.png"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\Users\\ProfilePics\\3684c793-105b-46ef-a755-bb53ea09de5b_sv1.jpg",
+      "PackagePath": "staticwebassets\\Users\\ProfilePics\\3684c793-105b-46ef-a755-bb53ea09de5b_sv1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\Users\\ProfilePics\\7b043fe6-8052-4aa4-89f1-9d6184d9871b_sv18.png",
+      "PackagePath": "staticwebassets\\Users\\ProfilePics\\7b043fe6-8052-4aa4-89f1-9d6184d9871b_sv18.png"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\Users\\ProfilePics\\877ccfff-f7de-4299-b196-cf820d4c8658_photo_2024-04-11_04-00-12.jpg",
+      "PackagePath": "staticwebassets\\Users\\ProfilePics\\877ccfff-f7de-4299-b196-cf820d4c8658_photo_2024-04-11_04-00-12.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\Users\\ProfilePics\\8e75963e-92b3-470b-8244-c2c2f1e18ef6_Usecasediagram-Page1.png",
+      "PackagePath": "staticwebassets\\Users\\ProfilePics\\8e75963e-92b3-470b-8244-c2c2f1e18ef6_Usecasediagram-Page1.png"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\Users\\ProfilePics\\92410255-28a8-48e6-ac9d-9fa2455f6187_sv16.jpg",
+      "PackagePath": "staticwebassets\\Users\\ProfilePics\\92410255-28a8-48e6-ac9d-9fa2455f6187_sv16.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\Users\\ProfilePics\\96eb6a85-c03d-4770-9d7e-9adc0f8041d1_prikol.jpg",
+      "PackagePath": "staticwebassets\\Users\\ProfilePics\\96eb6a85-c03d-4770-9d7e-9adc0f8041d1_prikol.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\Users\\ProfilePics\\bf6ee4a5-5677-45b0-9b03-23b68ee86616_photo_2024-04-28_14-29-51.jpg",
+      "PackagePath": "staticwebassets\\Users\\ProfilePics\\bf6ee4a5-5677-45b0-9b03-23b68ee86616_photo_2024-04-28_14-29-51.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\Users\\ProfilePics\\cbdce49e-bbe0-442f-9161-ff00acfbdf8d_3254243-1budanov1.jpg",
+      "PackagePath": "staticwebassets\\Users\\ProfilePics\\cbdce49e-bbe0-442f-9161-ff00acfbdf8d_3254243-1budanov1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\Users\\ProfilePics\\e44eabaa-e615-43c3-b992-b0ee451b4f09_photo_2023-10-31_20-42-48.jpg",
+      "PackagePath": "staticwebassets\\Users\\ProfilePics\\e44eabaa-e615-43c3-b992-b0ee451b4f09_photo_2023-10-31_20-42-48.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\resources\\AccessDenied.jpg",
+      "PackagePath": "staticwebassets\\resources\\AccessDenied.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\resources\\Logo.png",
+      "PackagePath": "staticwebassets\\resources\\Logo.png"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\resources\\LogoDark.png",
+      "PackagePath": "staticwebassets\\resources\\LogoDark.png"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\wwwroot\\resources\\LogoSquared.png",
+      "PackagePath": "staticwebassets\\resources\\LogoSquared.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Tourism.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Tourism.props",
+      "PackagePath": "build\\Tourism.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Tourism.props",
+      "PackagePath": "buildMultiTargeting\\Tourism.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Tourism.props",
+      "PackagePath": "buildTransitive\\Tourism.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

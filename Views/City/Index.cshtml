@@ -1,0 +1,78 @@
+@model IEnumerable<Tourism.City>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Міста</title>
+</head>
+<body>
+<div class="card w-100 mb-4">
+    <div class="card-body">
+        <div>
+            <div class="row space-between">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Міста</h2>
+                    @if(User.IsInRole("admin"))
+                    {
+                        <div class="d-flex">
+                            <a asp-action="Create" class="btn btn-success">
+                                <i class="bi bi-plus"></i>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var city in Model)
+        {
+            <div class="col">
+                <a asp-action="Details" asp-route-id="@city.CityId" style="text-decoration: none; color: black;">
+                    <div class="card h-100 rounded-3 d-flex flex-column justify-content-between">
+                        <div class="card-body flex-grow-1">
+                            <h5 class="card-title">@city.Name</h5>
+                            @if(city.Info != null)
+                            {
+                                @if(city.Info.Length > 125)
+                                {
+                                    <p class="card-text" style="color: DimGray;">@(city.Info.Substring(0, Math.Min(city.Info.Length, 125))+"...")</p>
+                                } else
+                                {
+                                    <p class="card-text" style="color: DimGray;">@city.Info</p>
+                                }
+                            }
+                        </div>
+                        <div class="card-footer">
+                            <div class="row space-between">
+                                @if(User.IsInRole("admin"))
+                                {
+                                    <div class = "col-4 flex-d">
+                                        <a asp-action="Delete" asp-route-id="@city.CityId" class="btn btn-danger me-2 w-100">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </div>
+                                    <div class = "col-4 flex-d">
+                                        <a asp-action="Edit" asp-route-id="@city.CityId" class="btn btn-warning me-2 w-100">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a>
+                                    </div>
+                                }
+                                <div class = "col flex-d">
+                                    <a asp-action="Details" asp-route-id="@city.CityId" class="btn btn-info me-2 w-100">
+                                        <i class="bi bi-arrows-fullscreen"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+
+</body>
+</html>

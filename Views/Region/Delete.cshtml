@@ -1,0 +1,100 @@
+@model Tourism.Region
+
+@{
+    IEnumerable<Tourism.City> cities = ViewData["cities"] as IEnumerable<Tourism.City>;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Видалення</title>
+</head>
+<body>
+
+<div class="card w-100 mb-4">
+    <div class="card-body">
+        <div>
+            <div class="row space-between">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Ви впевнені, що хочете видалити цей регіон?</h2>
+
+                <div class="d-flex">
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="RegionId" />
+                        <input type="submit" value="Так" class="btn btn-danger" />
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card w-100 mb-4">
+    <div class="card-body">
+        <div>
+            <div class="row space-between">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>@Model.Name</h2>
+                </div>
+            </div>
+            
+            @if(!string.IsNullOrEmpty(Model.Info))
+            {
+                <hr />
+                <div>
+                    @Html.Raw(Model.Info)
+                </div>
+                <br>
+            }
+        </div>
+    </div>
+</div>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var city in cities)
+        {
+            <div class="col">
+                <a asp-action="Details" asp-route-id="@city.CityId" asp-controller="City" style="text-decoration: none; color: black;">
+                    <div class="card h-100 rounded-3 d-flex flex-column justify-content-between">
+                        <div class="card-body flex-grow-1">
+                            <h5 class="card-title">@city.Name</h5>
+                            @if(city.Info != null)
+                            {
+                                @if(city.Info.Length > 125)
+                                {
+                                    <p class="card-text" style="color: DimGray;">@(city.Info.Substring(0, Math.Min(city.Info.Length, 125))+"...")</p>
+                                } else
+                                {
+                                    <p class="card-text" style="color: DimGray;">@city.Info</p>
+                                }
+                            }
+                        </div>
+                        <div class="card-footer">
+                            <div class="row space-between">
+                                <div class = "col-4 flex-d">
+                                    <a asp-action="Delete" asp-route-id="@city.CityId" asp-controller="City" class="btn btn-danger me-2 w-100">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </div>
+                                <div class = "col-4 flex-d">
+                                    <a asp-action="Edit" asp-route-id="@city.CityId" asp-controller="City" class="btn btn-warning me-2 w-100">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+                                </div>
+                                <div class = "col-4 flex-d">
+                                    <a asp-action="Details" asp-route-id="@city.CityId" asp-controller="City" class="btn btn-info me-2 w-100">
+                                        <i class="bi bi-arrows-fullscreen"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+
+</body>
+</html>

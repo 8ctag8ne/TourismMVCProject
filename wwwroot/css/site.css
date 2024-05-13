@@ -1,0 +1,109 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+a{
+  color: #0056B9;
+}
+.card{
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.card:hover{
+  background-color: whitesmoke;
+}
+
+.card:hover .list-group-item {
+  background-color: inherit;
+}
+
+.custom-shadow{
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.btn-warning{
+  background-color: #FFCF00;
+  /* color: white; */
+}
+
+.btn-info{
+  background-color: #cfe7e5;
+  /* color: white; */
+}
+
+.btn-danger{
+  background-color: #EA526F;
+  color: black;
+}
+.btn-success{
+  background-color: #00916E;
+}
+
+.btn{
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.profile-photo-container {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-right: 0.75rem;
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-photo-container-big {
+  height: 100%;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 0.25rem;
+}
+
+.list-group-flush {
+  margin-bottom: 0;
+}
+
+.badge-warning{
+  background-color: #FFCF00;
+  /* color: white; */
+}
+
+.badge-info{
+  background-color: #cfe7e5;
+  /* color: white; */
+}
+
+.badge-danger{
+  background-color: #EA526F;
+  color: black;
+}
+.badge-success{
+  background-color: #00916E;
+}

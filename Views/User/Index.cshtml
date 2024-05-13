@@ -1,0 +1,81 @@
+@model IEnumerable<Tourism.User>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> _signInManager
+@inject UserManager<User> _userManager
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<div class="list-group custom-shadow">
+    @foreach (var user in Model)
+    {
+        <a asp-action="Details" asp-route-id="@user.Id" class="list-group-item list-group-item-action flex-column align-items-start">
+             <div class="row no-gutters w-100">
+                <div class="col-auto">
+                    <div class="profile-photo-container">
+                                @if (!string.IsNullOrEmpty(user.ProfilePhoto))
+                                {
+                                    <img src="@user.ProfilePhoto" alt="@user.UserName" class="rounded-circle profile-photo">
+                                } else
+                                {
+                                    <img src="~/Resources/LogoSquared.png" alt="@user.UserName" class="rounded-circle profile-photo">
+                                }
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="d-flex w-100 justify-content-between">
+                        <div class="col">
+                            <h5 class="mb-1">@user.UserName</h5>
+                            <p class="mb-1">@user.Info</p>
+                            <div>
+                                @if(!string.IsNullOrEmpty(user.PhoneNumber))
+                                {
+                                    <small><i class="bi bi-telephone me-2"></i>@user.PhoneNumber</small>
+                                }
+                                @if(!string.IsNullOrEmpty(user.Email))
+                                {
+                                    <small><i class="bi bi-envelope me-2"></i>@user.Email</small>
+                                }
+                            </div>
+                        </div>
+                        @* <div class="col-auto">
+                            <a  class="btn btn-sm btn-primary"><i class="bi bi-shield-lock-fill"></i> Права доступу</a>
+                        </div> *@
+                        <div class="col-auto">
+                            @if(await _userManager.IsInRoleAsync(user, "admin"))
+                            {
+                                <small>Адміністратор</small>
+                            }
+                            else if(await _userManager.IsInRoleAsync(user, "guide"))
+                            {
+                                <small>Гід</small>
+                            }
+                            else
+                            {
+                                <small>Користувач</small>
+                            }
+                            <div class="d-flex justify-content-end">
+                                <form class="mt-2" asp-action="Edit" asp-controller="Roles" asp-route-userid="@user.Id" method="get">
+                                    <button type="submit" class="btn btn-info">Права доступу</button>
+                                    <input name="userid" value="@user.Id" hidden/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            @* <div class="btn-group btn-group-md float-right">
+            <a asp-action="Edit" asp-route-id="@user.Id" class="btn btn-sm btn-warning mr-2"><i class="bi bi-pencil-square"></i></a>
+            <a asp-action="Delete" asp-route-id="@user.Id" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
+            </div> *@
+        </a>
+    }
+</div>
+</body>
+</html>

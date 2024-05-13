@@ -1,0 +1,29 @@
+@using Microsoft.AspNetCore.Identity
+@model Tourism.ViewModel.ChangeRoleViewModel
+@{
+    Dictionary<string, string>roleName = new Dictionary<string, string>()
+        {
+            {"user", "Користувач"}, 
+            {"guide", "Гід"}, 
+            {"admin", "Адміністратор"}
+        };
+}
+
+
+<h2 class="mb-3">Зміна ролей для користувача @Model.UserName</h2>
+<form asp-action="Edit" method="post" class="wr">
+    <input type="hidden" name="userId" value="@Model.UserId" />
+    <div class = "card justify-content-center">
+        <div class="form-group">
+            @foreach (IdentityRole<int> role in Model.AllRoles)
+            {
+                <div class = " card-text my-2 mx-3">
+                    <input type="checkbox" name="roles" value="@role.Name"
+                        @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") />
+                        @roleName[role.Name]
+                </div>
+            }
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success mt-3">Зберегти</button>
+</form>

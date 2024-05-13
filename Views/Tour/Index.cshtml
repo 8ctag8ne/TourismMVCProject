@@ -1,0 +1,114 @@
+@model IEnumerable<Tourism.Tour>
+@{
+    var SearchString = ViewData["searchString"];
+    var StartDate = ViewData["startDate"];
+    var EndDate = ViewData["endDate"];
+    var Price = ViewData["price"];
+    var Category = ViewData["Category"];
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Тури</title>
+</head>
+<body>
+<form id="searchForm" method="get">
+    <div class="input-group my-3">
+        <input type="text" class="form-control" name="searchString" placeholder="Пошук" value="@SearchString">
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-success mx-2"><i class="bi bi-search"></i></button>
+            <button type="button" class="btn btn-light" id="toggleAdvancedSearch">Розширений пошук</button>
+        </div>
+    </div>
+    <div id="advancedSearch" style="display: @((StartDate!= null || EndDate!= null || Price!=null || Category!= null) ? "block;" : "none;")">
+        <div class="form-group">
+            <label for="startDate">Дата початку</label>
+            <input type="date" class="form-control" id="startDate" name="startDate" value="@StartDate">
+        </div>
+        <div class="form-group">
+            <label for="endDate">Дата кінця</label>
+            <input type="date" class="form-control" id="endDate" name="endDate" value="@EndDate">
+        </div>
+        <div class="form-group">
+            <label for="price">Ціна</label>
+            <input type="number" class="form-control" id="price" name="price" value="@Price">
+        </div>
+        <div class="form-group mb-3">
+            <label for="category">Категорія</label>
+            <select class="form-control" id="category" name="categoryId" asp-items="ViewBag.CategoryId">
+            </select>
+        </div>
+    </div>
+</form>
+@if(User.IsInRole("admin") || User.IsInRole("guide"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-light">Створити тур</a>
+    </p>
+}
+@foreach (var item in Model) {
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-sm-4">
+                <a asp-action="Details" asp-route-id="@item.TourId">
+                    <img src="@item.MainPhoto" class="img-fluid rounded-start object-fit-cover h-100" alt="@item.Name">
+                </a>
+            </div>
+            <div class="col-sm-8">
+                <div class="card-body">
+                    <a asp-action="Details" asp-route-id="@item.TourId" class="text-decoration-none">
+                        <h5 class="card-title" style="margin: 15px;">@item.Name</h5>
+                    </a>
+                    <ul class="list-group list-group-flush flex-grow-1">
+                        <li class="list-group-item">
+                            <strong>Місто:</strong> @(item.City?.Name ?? "N/A")
+                        </li>
+                         <li class="list-group-item">
+                            <strong>Категорія:</strong> @(item.Category?.Name ?? "N/A")
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Ціна:</strong> @(item.Price.HasValue ? $"{item.Price:C}" : "N/A")
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Початок:</strong> @(item.StartDate?.ToString("yyyy.MM.dd hh:mm") ?? "N/A")
+                        </li>
+                        @* <li class="list-group-item">
+                            <strong>Лишилося місць:</strong> @(item.AvaibleTickets.HasValue ? item.AvaibleTickets.Value.ToString() : "N/A")
+                        </li> *@
+                        @* <strong></strong> @(item.Category?.Name ?? "N/A") <br>
+                        <strong></strong> @(item.Price.HasValue ? $"{item.Price:C}" : "N/A") <br>
+                        <strong></strong> @(item.StartDate?.ToString("yyyy-MM-dd") ?? "N/A") - @(item.EndDate?.ToString("yyyy-MM-dd") ?? "N/A") <br>
+                        <strong></strong> @(item.Capacity.HasValue ? item.Capacity.Value.ToString() : "N/A") <br>
+                        <strong></strong> @(item.AvaibleTickets.HasValue ? item.AvaibleTickets.Value.ToString() : "N/A") *@
+                    </ul>
+                    <div class="d-flex justify-content-end">
+                        @if(User.IsInRole("admin") || User.IsInRole("guide"))
+                        {
+                            <a asp-action="Delete" asp-route-id="@item.TourId" class="btn btn-danger me-2">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                            <a asp-action="Edit" asp-route-id="@item.TourId" class="btn btn-warning me-2">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                        }
+                        <a asp-action="Details" asp-route-id="@item.TourId" class="btn btn-info me-2 ">
+                            <i class="bi bi-arrows-fullscreen"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+</body>
+</html>
+
+<script>
+    document.getElementById('toggleAdvancedSearch').addEventListener('click', function () {
+    const advancedSearch = document.getElementById('advancedSearch');
+    advancedSearch.style.display = advancedSearch.style.display === 'none' ? 'block' : 'none';
+});
+</script>

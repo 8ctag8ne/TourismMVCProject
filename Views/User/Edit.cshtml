@@ -1,0 +1,91 @@
+@model Tourism.User
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> _signInManager
+@inject UserManager<User> _userManager
+
+@{
+    var IsGuide = (bool)ViewData["IsGuide"];
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Редагувати дані</title>
+</head>
+<body>
+
+<div class="row">
+    <div class="col-lg-6">
+<h4 class="align-text-center">Редагувати дані</h4>
+<hr />
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            @* <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label">Ім'я користувача</label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Info" class="control-label"></label>
+                <input asp-for="Info" class="form-control" />
+                <span asp-validation-for="Info" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div> 
+            <div class="form-group mb-3">
+                <label asp-for="PhoneNumber" class="control-label">Номер телефону</label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="ProfilePhoto" class="form-control" type="hidden"/>
+                <span asp-validation-for="ProfilePhoto" class="text-danger"></span>
+            </div>
+
+            <div class="form-check mb-3">
+                <input name="isGuide" class="form-check-input" type="checkbox" value="true" @(ViewData["IsGuide"] != null && (bool)ViewData["IsGuide"] ? "checked" : "") id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Стати гідом
+                </label>
+            </div>
+
+            <div class="form-group mb-2">
+                <div class="card flex-row" style="box-shadow: none;"><img class="card-img-left example-card-img-responsive" id="preview" src="@(Model.ProfilePhoto ?? "/resources/LogoSquared.png")" alt="Profile Picture" style="max-width: 200px; max-height: 200px;" />
+                    <div class="card-body">
+                        <h4 class="card-title h5 h4-sm"><label asp-for="ProfilePic" for="formFile" class="form-label">Фото профілю</label></h4>
+                        <p class="card-text"><input asp-for="ProfilePic" class="form-control" type="file" id="formFile" accept="image/*" onchange="previewImage(event)">
+                    <span asp-validation-for="ProfilePic" class="text-danger"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Зберегти" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
+
+<script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var output = document.getElementById('preview');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+</script>

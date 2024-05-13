@@ -1,0 +1,263 @@
+@model IEnumerable<Tourism.Order>
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> _signInManager
+@inject UserManager<User> _userManager
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<ul class="list-group">
+     @foreach (var order in Model)
+    {
+        <li class="list-group-item" >
+            <div>
+                <a href="@Url.Action("Details", "Order", new { id = order.OrderId })" style="text-decoration: none; color: black;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h6>#@order.OrderId</h6> 
+                        @if(order.Status == "Скасовано")
+                        {
+                            <div class="badge badge-danger align-items-center" style="color: white;" id="badge-@order.OrderId">@order.Status</div>
+                        } else
+                        if(order.Status == "Опрацьовується")
+                        {
+                            <div class="badge badge-warning align-items-center"style="color: white;" id="badge-@order.OrderId">@order.Status</div>
+                        } else
+                        {
+                            <div class="badge badge-success align-items-center"style="color: white;" id="badge-@order.OrderId">@order.Status</div>
+                        }
+                    </div>
+                    
+                    
+                                                    <div class = "table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                                <tr>
+                                                                <th>Тур</th>
+                                                                <th>Гід</th>
+                                                                <th>Час початку</th>
+                                                                <th>Місце збору</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                <td>
+                                                                    <a class="h6" asp-action="Details" asp-controller="Tour" asp-route-id="@order.Tour?.TourId" style="text-decoration: none;">
+                                                                @order.Tour?.Name</a>
+                                                                </td>
+                                                                <td>
+                                                                    @if(order.Guide != null)
+                                                                    {
+                                                                    <a class="h6" asp-action="Details" asp-controller="User" asp-route-id="@order.Guide?.Id" style="text-decoration: none;">
+                                                                    @(order.Guide?.UserName ?? "N/A")
+                                                                </a>} else 
+                                                                    {<p>N/A</p>}
+                                                                </td>
+                                                                <td> @(order.Tour.StartDate?.ToString("yyyy.MM.dd hh:mm") ?? "N/A")</td>
+                                                                <td>@(order.Tour.StartPointName ?? "N/A")</td>
+                                                                </tr>
+                                                                <!-- Додайте інші рядки з даними тут -->
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                </a>
+            </div>
+            <div class="d-flex justify-content-end">
+                @if(order.Status == "Скасовано")
+                {
+                    <button class="btn btn-danger" disabled = "@(order.Status == "Скасовано")" style="color: white;" 
+                    onclick="CancelFunction(event, this, @_userManager.GetUserId(User), @order.OrderId)">Скасовано</button>
+                } else
+                {
+                    <button class="btn btn-danger me-2" disabled = "@(order.Status == "Скасовано")" style="color: white;" 
+                    onclick="CancelFunction(event, this, @_userManager.GetUserId(User), @order.OrderId)">Скасувати</button>
+                }
+                @if(order.Status == "Відправлено")
+                {
+                    <button class="btn btn-success" style="color: white;"
+                    onclick="TakeFunction(event, this, @_userManager.GetUserId(User), @order.OrderId)">Взяти</button>
+                } else
+                @if(order.Status == "Опрацьовується")
+                {
+                    <button class="btn btn-success" style="color: white;"
+                    onclick="AcceptFunction(event, this, @_userManager.GetUserId(User), @order.OrderId)">Прийняти</button>
+                } else
+                if(order.Status == "Прийнято")
+                {
+                    <button class="btn btn-success" style="color: white;" disabled="true">Прийнято</button>
+                }
+                    
+            </div> 
+        </li>
+    }
+</ul>
+</body>
+</html>
+
+
+<script>
+    function CancelFunction(event, x, userid, orderid) 
+    {
+        event.stopPropagation();
+        const badgeElement = document.getElementById(`badge-${orderid}`);
+        const parentListItem = x.closest('.list-group-item');
+        const takeButtonElement = parentListItem.querySelector('.btn-success');
+        
+        console.log("CancelFunction called with userid:", userid, "and orderid:", orderid);
+        $.ajax({
+            type: "POST",
+            url: "/Order/CancelOrder",
+            data: {OrderId: orderid, UserId: userid},
+            success: function (response) {
+                // Update UI if necessary
+                if (response.success) 
+                {
+                    if(badgeElement)
+                    {
+                        if(badgeElement.classList.contains('badge-success'))
+                        {
+                            badgeElement.classList.remove('badge-success');
+                        } else
+                        if(badgeElement.classList.contains('badge-warning'))
+                        {
+                            badgeElement.classList.remove('badge-warning');
+                        }
+                        badgeElement.classList.add('badge-danger');
+                        badgeElement.textContent = 'Скасовано';
+                    }
+                    // Змінюємо атрибути кнопки
+                    x.disabled = true;
+                    x.textContent = "Скасовано";
+                    if(x.classList.contains("me-2"))
+                    {
+                        x.classList.remove("me-2");
+                    }
+                    if (takeButtonElement) 
+                    {
+                        takeButtonElement.remove();
+                    }
+
+
+                    // Видаляємо атрибут onclick
+                    x.removeAttribute('onclick');
+                }
+                else 
+                {
+                    alert("Failed to cancel the order. Please try again later.");
+                }
+            },
+            error: function (xhr, status, error) 
+            {
+                // Handle error if AJAX request fails
+                console.error("AJAX error:", error);
+                // Optionally, display an error message to the user
+                alert("An error occurred while processing your request. Please try again later.");
+            }
+        });
+    }
+
+    function TakeFunction(event, x, userid, orderid) 
+    {
+        event.stopPropagation();
+        const badgeElement = document.getElementById(`badge-${orderid}`);
+        const parentListItem = x.closest('.list-group-item');
+        const takeButtonElement = parentListItem.querySelector('.btn-success');
+        
+        console.log("TakeFunction called with userid:", userid, "and orderid:", orderid);
+        $.ajax({
+            type: "POST",
+            url: "/Order/TakeOrder",
+            data: {OrderId: orderid, GuideId: userid},
+            success: function (response) {
+                // Update UI if necessary
+                if (response.success) 
+                {
+                    if(badgeElement && badgeElement.classList.contains('badge-success'))
+                    {
+                        badgeElement.classList.remove('badge-success');
+                        badgeElement.classList.add('badge-warning');
+                        badgeElement.textContent = 'Опрацьовується';
+                    }
+                    // Змінюємо атрибути кнопки
+                    x.textContent = "Прийняти";
+                    if(x.classList.contains("me-2"))
+                    {
+                        x.classList.remove("me-2");
+                    }
+                    @* if (takeButtonElement) 
+                    {
+                        takeButtonElement.remove();
+                    } *@
+
+
+                    // Видаляємо атрибут onclick
+                    x.removeAttribute('onclick');
+                    x.setAttribute('onclick', 'AcceptFunction(event, this, ' + userid + ',' + orderid + ')');
+                }
+                else 
+                {
+                    alert("Failed to cancel the order. Please try again later.");
+                }
+            },
+            error: function (xhr, status, error) 
+            {
+                // Handle error if AJAX request fails
+                console.error("AJAX error:", error);
+                // Optionally, display an error message to the user
+                alert("An error occurred while processing your request. Please try again later.");
+            }
+        });
+    }
+
+    function AcceptFunction(event, x, userid, orderid) 
+    {
+        event.stopPropagation();
+        const badgeElement = document.getElementById(`badge-${orderid}`);
+        const parentListItem = x.closest('.list-group-item');
+        const takeButtonElement = parentListItem.querySelector('.btn-success');
+        
+        console.log("TakeFunction called with userid:", userid, "and orderid:", orderid);
+        $.ajax({
+            type: "POST",
+            url: "/Order/AcceptOrder",
+            data: {OrderId: orderid, GuideId: userid},
+            success: function (response) {
+                // Update UI if necessary
+                if (response.success) 
+                {
+                    if(badgeElement && badgeElement.classList.contains('badge-warning'))
+                    {
+                        badgeElement.classList.remove('badge-warning');
+                        badgeElement.classList.add('badge-success');
+                        badgeElement.textContent = 'Прийнято';
+                    }
+                    // Змінюємо атрибути кнопки
+                    x.disabled = true;
+                    x.textContent = "Прийнято";
+                    if(x.classList.contains("me-2"))
+                    {
+                        x.classList.remove("me-2");
+                    }
+                    // Видаляємо атрибут onclick
+                    x.removeAttribute('onclick');
+                }
+                else 
+                {
+                    alert("Failed to cancel the order. Please try again later.");
+                }
+            },
+            error: function (xhr, status, error) 
+            {
+                // Handle error if AJAX request fails
+                console.error("AJAX error:", error);
+                // Optionally, display an error message to the user
+                alert("An error occurred while processing your request. Please try again later.");
+            }
+        });
+    }
+
+</script>

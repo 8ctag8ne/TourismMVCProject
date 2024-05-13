@@ -1,0 +1,215 @@
+@model Tourism.User
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> _signInManager
+@inject UserManager<User> _userManager
+@{
+    IEnumerable<Tourism.Order> orders = ViewData["Orders"] as IEnumerable<Tourism.Order>;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Model.UserName</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="profile-photo-container-big">
+                    @if (!string.IsNullOrEmpty(Model.ProfilePhoto))
+                    {
+                        <img src="@Model.ProfilePhoto" alt="@Model.UserName" class="card-img-top profile-photo">
+                    } else
+                    {
+                        <img src="~/Resources/LogoSquared.png" alt="@Model.UserName" class="card-img-top profile-photo">
+                    }
+                </div>
+            </div>
+            <div class="card">
+                 <div class="card-footer">
+                            <div class="row space-between">
+                                <div class = "col-6 flex-d">
+                                    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger me-2 w-100">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </div>
+                                <div class = "col-6 flex-d">
+                                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning me-2 w-100">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="card-title">@Model.UserName</h5>
+                            <p class="card-text">@Model.Info</p>
+                        </div>
+                        <div>
+                            @if(!string.IsNullOrEmpty(Model.PhoneNumber))
+                            {
+                                <p class="card-text"><i class="bi bi-telephone me-2"></i>@Model.PhoneNumber</p>
+                            }
+                            @if(!string.IsNullOrEmpty(Model.Email))
+                            {
+                                <p class="card-text"><i class="bi bi-envelope me-2"></i>@Model.Email</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <button class="btn btn-light w-100" type="button" data-bs-toggle="collapse" data-bs-target="#ordersCollapse" aria-expanded="false" aria-controls="ordersCollapse">
+                <h5 class="d-flex justify-content-between mb-0">
+                    Путівки
+                    <i class="bi bi-chevron-down"></i>
+                </h5>
+            </button>
+                <div id="ordersCollapse" class="collapse">
+                    <div class="card-body">
+                        @if (orders != null && orders.Count() != 0)
+                        {
+                            <ul class="list-group">
+                                @foreach (var order in orders)
+                                {
+                                    <li class="list-group-item" >
+                                        <div>
+                                            <a href="@Url.Action("Details", "Order", new { id = order.OrderId })" style="text-decoration: none; color: black;">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    
+                                                        <h6>
+                                                            #@order.OrderId
+                                                        </h6>
+                                                    
+                                                    
+                                                    @if(order.Status == "Скасовано")
+                                                    {
+                                                        <div class="badge badge-danger align-items-center" style="color: white;" id="badge-@order.OrderId">@order.Status</div>
+                                                    } else
+                                                    if(order.Status == "Опрацьовується")
+                                                    {
+                                                        <div class="badge badge-warning align-items-center"style="color: white;" id="badge-@order.OrderId">@order.Status</div>
+                                                    } else
+                                                    {
+                                                        <div class="badge badge-success align-items-center"style="color: white;" id="badge-@order.OrderId">@order.Status</div>
+                                                    }
+                                                </div>
+                                                    <div class = "table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                                <tr>
+                                                                <th>Тур</th>
+                                                                <th>Гід</th>
+                                                                <th>Час початку</th>
+                                                                <th>Місце збору</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                <td>
+                                                                    <a class="h6" asp-action="Details" asp-controller="Tour" asp-route-id="@order.Tour?.TourId" style="text-decoration: none;">
+                                                                @order.Tour?.Name</a>
+                                                                </td>
+                                                                <td>
+                                                                    @if(order.Guide != null)
+                                                                    {
+                                                                    <a class="h6" asp-action="Details" asp-controller="User" asp-route-id="@order.Guide?.Id" style="text-decoration: none;">
+                                                                    @(order.Guide?.UserName ?? "N/A")
+                                                                </a>} else 
+                                                                    {<p>N/A</p>}
+                                                                </td>
+                                                                <td> @(order.Tour.StartDate?.ToString("yyyy.MM.dd hh:mm") ?? "N/A")</td>
+                                                                <td>@(order.Tour.StartPointName ?? "N/A")</td>
+                                                                </tr>
+                                                                <!-- Додайте інші рядки з даними тут -->
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                
+                                            </a>
+                                        </div>
+                                        <div class="d-flex justify-content-end">
+                                            @if(order.Status == "Скасовано")
+                                            {
+                                                <button class="btn btn-danger" disabled = "@(order.Status == "Скасовано")" style="color: white;" 
+                                                onclick="CancelFunction(event, this, @_userManager.GetUserId(User), @order.OrderId)">Скасовано</button>
+                                            } else
+                                            {
+                                                <button class="btn btn-danger" disabled = "@(order.Status == "Скасовано")" style="color: white;" 
+                                                onclick="CancelFunction(event, this, @_userManager.GetUserId(User), @order.OrderId)">Скасувати</button>
+                                            }
+                                        </div> 
+                                    </li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <p>Не знайдено жодних путівок.</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+    function CancelFunction(event, x, userid, orderid) 
+    {
+        event.stopPropagation();
+        const badgeElement = document.getElementById(`badge-${orderid}`);
+        
+        console.log("CancelFunction called with userid:", userid, "and orderid:", orderid);
+        $.ajax({
+            type: "POST",
+            url: "/Order/CancelOrder",
+            data: {OrderId: orderid, UserId: userid},
+            success: function (response) {
+                // Update UI if necessary
+                if (response.success) 
+                {
+                    if(badgeElement)
+                    {
+                        if(badgeElement.classList.contains('badge-success'))
+                        {
+                            badgeElement.classList.remove('badge-success');
+                        } else
+                        if(badgeElement.classList.contains('badge-warning'))
+                        {
+                            badgeElement.classList.remove('badge-warning');
+                        }
+                        badgeElement.classList.add('badge-danger');
+                        badgeElement.textContent = 'Скасовано';
+                    }
+                    x.disabled = true;
+                    x.textContent = "Скасовано";
+                }
+                else 
+                {
+                    alert("Failed to cancel the order. Please try again later.");
+                }
+            },
+            error: function (xhr, status, error) 
+            {
+                // Handle error if AJAX request fails
+                console.error("AJAX error:", error);
+                // Optionally, display an error message to the user
+                alert("An error occurred while processing your request. Please try again later.");
+            }
+        });
+    }
+
+</script>

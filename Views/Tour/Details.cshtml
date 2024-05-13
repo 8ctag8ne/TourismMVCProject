@@ -1,0 +1,335 @@
+@model Tourism.Tour
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> _signInManager
+@inject UserManager<User> _userManager
+
+@{
+    var IsBooked = (bool)ViewData["Booked"];
+    IEnumerable<Tourism.Comment> Comments = ViewData["Comments"] as IEnumerable<Tourism.Comment>;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div class="card w-100 mb-4">
+    <div class="card-body">
+        <div>
+            <div class="row space-between">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>@Model.Name</h2>
+                    @if(User.IsInRole("admin") || User.IsInRole("guide"))
+                    {
+                        <div class="d-flex">
+                            <a asp-action="Delete" asp-route-id="@Model.TourId" class="btn btn-danger me-2">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                            <a asp-action="Edit" asp-route-id="@Model.TourId" class="btn btn-warning me-2">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="card mb-3">
+    <div class="card-img-top">
+        <img src="@Html.DisplayFor(model => model.MainPhoto)" alt="Main Photo" class="img-fluid w-100" style="padding: 10px;">
+    </div>
+</div>
+
+<div class="card mb-3">
+            <button class="btn btn-light w-100" type="button" data-bs-toggle="collapse" data-bs-target="#tourDetails" aria-expanded="false" aria-controls="tourDetails">
+                <h5 class="d-flex justify-content-between mb-0">
+                    Деталі туру 
+                    <i class="bi bi-chevron-down"></i>
+                </h5>
+            </button>
+
+    <div id="tourDetails" class="collapse" aria-labelledby="headingOne" data-bs-parent="#accordionTourDetails">
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                @if(Model.Category != null)
+                {
+                    <li class="list-group-item">
+                        <strong>@Html.DisplayNameFor(model => model.Category):</strong>
+                        @Html.DisplayFor(model => model.Category.Name)
+                    </li>
+                }
+                @if(Model.City != null)
+                {
+                    <li class="list-group-item">
+                        <strong>@Html.DisplayNameFor(model => model.City):</strong>
+                        @Html.DisplayFor(model => model.City.Name)
+                    </li>
+                }
+                @if(Model.Price != null)
+                {
+                    <li class="list-group-item">
+                        <strong>@Html.DisplayNameFor(model => model.Price):</strong>
+                        @Html.DisplayFor(model => model.Price)
+                    </li>
+                }
+                @if(Model.StartDate != null)
+                {
+                    <li class="list-group-item">
+                        <strong>@Html.DisplayNameFor(model => model.StartDate):</strong>
+                        @Html.DisplayFor(model => model.StartDate)
+                    </li>
+                }
+                @if(Model.EndDate != null)
+                {
+                    <li class="list-group-item">
+                        <strong>@Html.DisplayNameFor(model => model.EndDate):</strong>
+                        @Html.DisplayFor(model => model.EndDate)
+                    </li>
+                }
+                @if(Model.Capacity != null)
+                {
+                    <li class="list-group-item">
+                        <strong>@Html.DisplayNameFor(model => model.Capacity):</strong>
+                        @Html.DisplayFor(model => model.Capacity)
+                    </li>
+                }
+                @if(Model.AvaibleTickets != null)
+                {
+                    <li class="list-group-item">
+                        <strong>@Html.DisplayNameFor(model => model.AvaibleTickets):</strong>
+                        @Html.DisplayFor(model => model.AvaibleTickets)
+                    </li>
+                }
+                @if(Model.StartPointGeo != null)
+                {
+                    <li class="list-group-item">
+                        <strong>@Html.DisplayNameFor(model => model.StartPointName):</strong>
+                        <a href=@Model.StartPointGeo>@Model.StartPointName</a>
+                    </li>
+                } else
+                @if(Model.StartPointName != null)
+                {
+                    <li class="list-group-item">
+                        <strong>@Html.DisplayNameFor(model => model.StartPointName):</strong>
+                        @Html.DisplayFor(model => model.StartPointName)
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header d-flex justify-content-between align-items-center">
+            <h5>@Html.DisplayNameFor(model => model.Info)</h5>
+        <div>
+            @* <form method="post" asp-action="Create" asp-controller="Order">
+                    <input name="UserId" value="@_userManager.GetUserId(User)" readonly hidden/>
+                    <input name="TourId" value="@Model.TourId" readonly hidden/>
+                    <input name="Status" value="Збережено" readonly hidden/>
+                <div class="form-group">
+                    <input type="submit" value="Забронювати" class="btn btn-success" onclick="PostOrderFunction(this, @_userManager.GetUserId(User), @Model.TourId)"/>
+                </div>
+            </form> *@
+            @if(IsBooked)
+            {
+                <button class="btn btn-warning" data-toggle="button" aria-pressed="false"  
+                onclick="PostOrderFunction(this, @_userManager.GetUserId(User), @Model.TourId)">
+                <i class="bi bi-map-fill me-2"></i>
+                    Скасувати бронювання
+                </button>
+            } else
+            if(Model.AvaibleTickets > 0 && User.Identity.IsAuthenticated)
+            {
+                <button class="btn btn-success" data-toggle="button" aria-pressed="false"  
+                onclick="PostOrderFunction(this, @_userManager.GetUserId(User), @Model.TourId)">
+                <i class="bi bi-map me-2"></i>
+                    Забронювати
+                </button>
+            }
+        </div>
+    </div>
+    <div class="card-body">
+        <p class="card-text">@Html.DisplayFor(model => model.Info)</p>
+    </div>
+</div>
+
+@if(User.Identity.IsAuthenticated)
+{
+    <div class="card mb-3">
+    <div class="card-title my-2 mx-3"><h5>Ваш відгук:</h5></div>
+        <form method="post" asp-controller="Comment" asp-action="Create">
+            <div class="form-group mx-3">
+                <textarea name="Text" id="output" class="form-control commentinput"></textarea>
+            </div>
+            <input name="UserId" value="@_userManager.GetUserId(User)" readonly hidden/>
+            <input asp-for="TourId" value="@Model.TourId" readonly hidden/>
+            <div class="form-group my-3 mx-3">
+                <input type="submit" value="Додати коментар" class="btn btn-info" />
+            </div>
+        </form>
+    </div>
+}
+else
+{
+    <div class="card mb-3">
+    <div class="card-title my-2 mx-3"><h5>Щоби додати відгук необхідно зареєструватися.</h5></div>
+    </div>
+}
+
+@if (Comments.Count() == 0)
+{
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">Наразі відгуки відсутні</p>
+        </div>
+    </div>
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Відгуки:</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            @foreach (var comment in Comments)
+            {
+                <li class="list-group-item">
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex" id="comment-@comment.CommentId">
+                            <div class="me-3">
+                                <a asp-controller="User" asp-action="Details" asp-route-id="@comment.UserId" style="text-decoration: none;">
+                                    @if (!string.IsNullOrEmpty(comment.User?.ProfilePhoto))
+                                    {
+                                        <img src="@Url.Content(comment.User.ProfilePhoto)" class="rounded-circle" alt="User Avatar" width="50" height="50">
+                                    }
+                                    else
+                                    {
+                                        <span class="rounded-circle bg-secondary d-flex align-items-center justify-content-center text-white" style="width: 50px; height: 50px;">
+                                            @(comment.User?.UserName?.Substring(0, 1).ToUpper())
+                                        </span>
+                                    }
+                                </a>
+                            </div>
+                            <div>
+                                <a asp-controller="User" asp-action="Details" asp-route-id="@comment.UserId" style="text-decoration: none; color: black;">
+                                    <h6 class="mb-0">@comment.User?.UserName</h6>
+                                </a>
+                                <p class="mb-0" id="comment-text-@comment.CommentId">@comment.Text</p>
+                            </div>
+                        </div>
+                        @if(User.IsInRole("admin") || User.IsInRole("guide") || _userManager.GetUserId(User) == Convert.ToString(comment.UserId))
+                        {
+                            <div>
+                                <button class="btn btn-sm btn-warning" onclick="editComment(@comment.CommentId, @_userManager.GetUserId(User))">Редагувати</button>
+                                <a asp-action="Delete" asp-controller="Comment" asp-route-id="@comment.CommentId" class="btn btn-sm btn-danger">Видалити</a>
+                            </div>
+                        }
+                    </div>
+                    <div id="comment-edit-@comment.CommentId" style="display: none;">
+                        <textarea class="form-control mt-2" id="comment-textarea-@comment.CommentId">@comment.Text</textarea>
+                        <button class="btn btn-info btn-sm mt-2" onclick="saveComment(@comment.CommentId, @_userManager.GetUserId(User))">Підтвердити</button>
+                    </div>
+                    
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+</body>
+</html>
+
+<script>
+    function PostOrderFunction(x, userid, tourid) 
+    {
+        
+        console.log("PostOrderFunction called with userid:", userid, "and tourid:", tourid);
+        $.ajax({
+            type: "POST",
+            url: "/Order/PostOrder",
+            data: {TourId: tourid, UserId: userid},
+            success: function (response) {
+                // Update UI if necessary
+                if (response.success) 
+                {
+                    if(x.innerHTML.includes("Забронювати"))
+                    {
+                        x.innerHTML = '<i class="bi bi-map-fill me-2"></i> Скасувати бронювання';
+                        x.classList.replace("btn-success", "btn-warning");
+                    } else
+                    {
+                        x.innerHTML = '<i class="bi bi-map me-2"></i> Забронювати';
+                        x.classList.replace("btn-warning", "btn-success");
+                    }
+                } 
+                else 
+                {
+                    alert("Failed to create the order. Please try again later.");
+                }
+            },
+            error: function (xhr, status, error) 
+            {
+                // Handle error if AJAX request fails
+                console.error("AJAX error:", error);
+                // Optionally, display an error message to the user
+                alert("An error occurred while processing your request. Please try again later.");
+            }
+        });
+    }
+
+</script>
+
+    <script>
+        function editComment(commentId, userId) {
+            var commentText = document.getElementById('comment-text-' + commentId);
+            var commentEdit = document.getElementById('comment-edit-' + commentId);
+            commentText.style.display = 'none';
+            commentEdit.style.display = 'block';
+        }
+
+        function saveComment(commentId, userId) {
+            var commentTextarea = document.getElementById('comment-textarea-' + commentId);
+            var newCommentText = commentTextarea.value;
+            console.log("saveComment called with text:", newCommentText, "and commentid:", commentId);
+
+            // Тут ви можете виконати AJAX-запит для збереження змін на сервері
+            $.ajax({
+                type: "POST",
+                url: "/Comment/EditOnTourPage",
+                data: {
+                    CommentId: parseInt(commentId, 10), // Convert commentId to an integer
+                    CommentText: newCommentText.trim().toString() // Ensure CommentText is a string
+                },
+                success: function (response) {
+                    // Update UI if necessary
+                    if (response.success) 
+                    {
+                        var commentText = document.getElementById('comment-text-' + commentId);
+                        var commentEdit = document.getElementById('comment-edit-' + commentId);
+
+                        commentText.textContent = newCommentText;
+                        commentText.style.display = 'block';
+                        commentEdit.style.display = 'none';
+                    } 
+                    else 
+                    {
+                        alert("Failed to edit the comment. Please try again later.");
+                    }
+                },
+                error: function (xhr, status, error) 
+                {
+                    // Handle error if AJAX request fails
+                    console.error("AJAX error:", error);
+                    // Optionally, display an error message to the user
+                    alert("An error occurred while processing your request. Please try again later.");
+                }
+            });
+        }
+    </script>
