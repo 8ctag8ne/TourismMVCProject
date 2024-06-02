@@ -107,3 +107,20 @@ a{
 .badge-success{
   background-color: #00916E;
 }
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    opacity: 0.8;
+    /* background-color: rgba(0, 0, 0, 0.5); Встановіть бажаний колір фону */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1); /* Інвертує колір іконок */
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}

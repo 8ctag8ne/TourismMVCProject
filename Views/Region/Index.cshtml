@@ -11,6 +11,18 @@
     <title>Регіони</title>
 </head>
 <body>
+    <style>
+        .image-container {
+            height: 200px; /* встановлюємо бажану висоту для зображень */
+            overflow: hidden; /* приховуємо частину зображення, яка виходить за межі контейнера */
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* зберігає пропорції зображення та заповнює весь контейнер */
+        }
+    </style>
 <div class="card w-100 mb-4">
     <div class="card-body">
         <div>
@@ -36,6 +48,9 @@
             <div class="col">
                 <a asp-action="Details" asp-route-id="@region.RegionId" style="text-decoration: none; color: black;">
                     <div class="card h-100 rounded-3 d-flex flex-column justify-content-between">
+                        <div class="image-container">
+                                <img src="@(!string.IsNullOrEmpty(region.MainPhoto) ? region.MainPhoto : "resources/Logo.png")" class="card-img-top" alt="@region.Name">
+                            </div>
                         <div class="card-body flex-grow-1">
                             <h5 class="card-title">@region.Name</h5>
                             @if(region.Info != null)

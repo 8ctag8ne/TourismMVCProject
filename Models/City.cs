@@ -17,6 +17,9 @@ public partial class City
 
     [Display(Name = "Назва")]
     public string? Name { get; set; }
+    
+    [Display(Name = "Фото")]
+    public string? MainPhoto { get; set; }
 
     public virtual ICollection<Tour> Tours { get; set; } = new List<Tour>();
 }

@@ -26,6 +26,7 @@
                 <textarea asp-for="Info" class="form-control" rows="4"></textarea>
                 <span asp-validation-for="Info" class="text-danger"></span>
             </div>
+            <input type="hidden" asp-for="MainPhoto" />
             <div class="form-group my-2">
                 <div class="card flex-row" style="box-shadow: none;"><img class="card-img-left example-card-img-responsive" id="preview" src="@(Model.MainPhoto ?? "/resources/LogoSquared.png")" alt="Profile Picture" style="max-width: 200px; max-height: 200px;" />
                     <div class="card-body">

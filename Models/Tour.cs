@@ -50,6 +50,7 @@ public partial class Tour
     public virtual City? City { get; set; }
 
     [Display(Name = "Назва")]
+    [Required(ErrorMessage = "Введіть назву туру")]
     public string? Name { get; set; }
 
     public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();

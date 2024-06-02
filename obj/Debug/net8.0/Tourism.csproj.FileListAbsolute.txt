@@ -258,3 +258,4 @@ C:\Users\nazar\OneDrive\Рабочий стол\унік\Прога\Tourism\bin\
 C:\Users\nazar\OneDrive\Рабочий стол\унік\Прога\Tourism\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\nazar\OneDrive\Рабочий стол\унік\Прога\Tourism\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\nazar\OneDrive\Рабочий стол\унік\Прога\Tourism\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\nazar\OneDrive\Рабочий стол\унік\Прога\Tourism\obj\Debug\net8.0\Tourism.sourcelink.json

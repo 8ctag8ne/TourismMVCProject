@@ -67,10 +67,19 @@ namespace Tourism.Controllers_
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "admin")]
-        public async Task<IActionResult> Create([Bind("RegionId,Info,Name")] Region region)
+        public async Task<IActionResult> Create([Bind("RegionId,Info,Name,MainPhoto")] Region region, [FromForm] IFormFile? MainPhotoFile)
         {
             if (ModelState.IsValid)
             {
+                if(MainPhotoFile != null)
+                {
+                    string folder = "Regions/MainPhotos/";
+                    string FileNameWithoutSpaces = string.Join("", MainPhotoFile.FileName.Split(" ", StringSplitOptions.RemoveEmptyEntries));
+                    folder +=  Guid.NewGuid().ToString() + "_" + FileNameWithoutSpaces;
+                    string ServerFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
+                    await MainPhotoFile.CopyToAsync(new FileStream(ServerFolder, FileMode.Create));
+                    region.MainPhoto = "/"+folder;
+                }
                 region.Info = region.Info?.Replace("\n", "<br / >");
                 _context.Add(region);
                 await _context.SaveChangesAsync();
@@ -103,7 +112,7 @@ namespace Tourism.Controllers_
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "admin")]
-        public async Task<IActionResult> Edit(int id, [Bind("RegionId,Info,Name")] Region region)
+        public async Task<IActionResult> Edit(int id, [Bind("RegionId,Info,Name,MainPhoto")] Region region, [FromForm] IFormFile? MainPhotoFile)
         {
             if (id != region.RegionId)
             {
@@ -114,6 +123,15 @@ namespace Tourism.Controllers_
             {
                 try
                 {
+                    if(MainPhotoFile != null && MainPhotoFile.Length > 0)
+                    {
+                        string folder = "Regions/MainPhotos/";
+                        string FileNameWithoutSpaces = string.Join("", MainPhotoFile.FileName.Split(" ", StringSplitOptions.RemoveEmptyEntries));
+                        folder +=  Guid.NewGuid().ToString() + "_" + FileNameWithoutSpaces;
+                        string ServerFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
+                        await MainPhotoFile.CopyToAsync(new FileStream(ServerFolder, FileMode.Create));
+                        region.MainPhoto = "/"+folder;
+                    }
                     region.Info = region.Info?.Replace("\n", "<br / >");
                     _context.Update(region);
                     await _context.SaveChangesAsync();

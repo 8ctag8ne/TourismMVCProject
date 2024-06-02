@@ -189,6 +189,9 @@ namespace Tourism.Migrations
                     b.Property<string>("Info")
                         .HasColumnType("text");
 
+                    b.Property<string>("MainPhoto")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
@@ -241,7 +244,7 @@ namespace Tourism.Migrations
                     b.Property<int>("TourId")
                         .HasColumnType("int");
 
-                    b.HasIndex("GuideId");
+                    b.HasKey("GuideId", "TourId");
 
                     b.HasIndex("TourId");
 
@@ -313,6 +316,9 @@ namespace Tourism.Migrations
 
                     b.Property<string>("Info")
                         .HasColumnType("text");
+
+                    b.Property<string>("MainPhoto")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");

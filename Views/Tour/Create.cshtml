@@ -9,18 +9,69 @@
     <title>Create</title>
 </head>
 <body>
+    <style>
+        .photo-container {
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-<h4>Tour</h4>
+        .photo-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+    </style>
+
+<h4>Новий тур</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+            <div class="form-group my-2">
+                <div class="card flex-row" style="box-shadow: none;"><img class="card-img-left example-card-img-responsive" id="preview" src="@("/resources/LogoSquared.png")" alt="Profile Picture" style="max-width: 200px; max-height: 200px;" />
+                    <div class="card-body">
+                        <h4 class="card-title h5 h4-sm"><label for="formFile" class="form-label">Обкладинка туру</label></h4>
+                        <p class="card-text"><input name="MainPhotoFile" class="form-control" type="file" id="formFile" accept="image/*" onchange="previewImage(event)">
+                    </div>
+                </div>
+            </div>
+            @if (ViewData["UploadedPhotos"] != null)
+            {
+                <div id="previewContainer" class="row mt-3">
+                    @foreach (var photoBytes in (List<byte[]>)ViewData["UploadedPhotos"])
+                    {
+                        var photoBase64 = Convert.ToBase64String(photoBytes);
+                        var photoSrc = $"data:image/png;base64,{photoBase64}";
+                        
+                        <div class="col-md-4">
+                            <div class="card mb-3">
+                                <div class="photo-container w-100">
+                                    <img src="@photoSrc" class="form-group card-img-top w-100 h-100" alt="Photo Preview">
+                                </div>
+                                <div class="card-body justify-content-center">
+                                    <button type="button" style="justify-content: center; align-items: center;" class="btn btn-danger w-100 btn-sm" onclick="removeImage(this)"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </div>
+                            <input type="hidden" name="UploadedPhotos" value="@photoBase64">
+                        </div>
+                    }
+                </div>
+            }
+            <div class="form-group">
+                <label class="control-label">Фотографії туру</label>
+                <input name="Photos" class="form-control" type="file" multiple accept="image/*" onchange="previewImages(event)">
+            </div>
+            <div id="previewContainer" class="row mt-3"></div>
             <div class="form-group">
                 <label asp-for="CityId" class="control-label"></label>
                 <select asp-for="CityId" class ="form-control" asp-items="ViewBag.CityId"></select>
@@ -33,11 +84,6 @@
                 <label asp-for="Info" class="control-label"></label>
                 <input asp-for="Info" class="form-control" />
                 <span asp-validation-for="Info" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MainPhoto" class="control-label"></label>
-                <input asp-for="MainPhoto" class="form-control" />
-                <span asp-validation-for="MainPhoto" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
@@ -83,5 +129,48 @@
     </div>
 </div>
 
+
+<script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var output = document.getElementById('preview');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+</script>
+
+<script>
+    function previewImages(event) {
+        var container = document.getElementById('previewContainer');
+        @* container.innerHTML = ''; // Очищаємо контейнер перед додаванням нових фото *@
+
+        var files = event.target.files;
+        for (var i = 0; i < files.length; i++) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var card = document.createElement('div');
+                card.className = 'col-md-4';
+                card.innerHTML = `
+                    <div class="card mb-3">
+                        <div class="photo-container w-100">
+                            <img src="${e.target.result}" class="card-img-top w-100 h-100" alt="Photo Preview">
+                        </div>
+                        <div class="card-body justify-content-center">
+                            <button type="button" style="justify-content: center; align-items: center;" class="btn btn-danger w-100 btn-sm" onclick="removeImage(this)"><i class="bi bi-trash"></i></button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            }
+            reader.readAsDataURL(files[i]);
+        }
+    }
+
+    function removeImage(btn) {
+        btn.closest('.col-md-4').remove();
+    }
+</script>
 </body>
 </html>

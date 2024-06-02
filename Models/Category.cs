@@ -8,7 +8,6 @@ public partial class Category
 {
     public int CategoryId { get; set; }
 
-
     [Display(Name = "Загальна інформація")]
     public string? Info { get; set; }
 

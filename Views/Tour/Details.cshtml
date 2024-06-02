@@ -6,6 +6,7 @@
 @{
     var IsBooked = (bool)ViewData["Booked"];
     IEnumerable<Tourism.Comment> Comments = ViewData["Comments"] as IEnumerable<Tourism.Comment>;
+    IEnumerable<Tourism.Photo> Photos  =  ViewData["Photos"] as IEnumerable<Tourism.Photo>;
 }
 <!DOCTYPE html>
 
@@ -13,6 +14,14 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Details</title>
+    <style>
+        .carousel-item img 
+        {
+            width: 100%;
+            height: 400px; /* Встановіть бажану висоту */
+            object-fit: contain;
+        }
+    </style>
 </head>
 <body>
 
@@ -42,7 +51,30 @@
 
 <div class="card mb-3">
     <div class="card-img-top">
-        <img src="@Html.DisplayFor(model => model.MainPhoto)" alt="Main Photo" class="img-fluid w-100" style="padding: 10px;">
+        <div id="tourCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item my-3 active">
+                <img src="@Html.DisplayFor(model => model.MainPhoto)" class="d-block w-100" alt="Main Photo">
+            </div>
+            @if (Photos != null && Photos.Count() > 0 )
+            {
+                @foreach (var photo in Photos)
+                {
+                    <div class="carousel-item my-3">
+                        <img src="@photo.Path" class="d-block w-100" alt="Photo">
+                    </div>
+                }
+            }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#tourCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#tourCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="false"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
     </div>
 </div>
 

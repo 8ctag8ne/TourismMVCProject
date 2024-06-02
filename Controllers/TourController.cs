@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -62,11 +63,12 @@ namespace Tourism.Controllers_
                 ViewData["Category"] = categoryId;
             }
 
-            tourismDbContext.Reverse();
+            var tourList = await tourismDbContext.ToListAsync();
+            tourList.Reverse();
             var Categories = new SelectList(_context.Categories, "CategoryId", "Name", categoryId).ToList();
             Categories.Insert(0, new SelectListItem() { Value = "null", Text = "Оберіть категорію" });
             ViewData["CategoryId"] = new SelectList(Categories, "Value", "Text", categoryId);
-            return View(await tourismDbContext.ToListAsync());
+            return View(tourList);
         }
 
         // GET: Tour/Details/5
@@ -90,7 +92,7 @@ namespace Tourism.Controllers_
             && order.Status != StatusHelper.GetStatus(StatusEnum.Cancelled));
 
             var comments = await _context.Comments.Where(c=> c.TourId == id).Include(c => c.User).ToListAsync();
-
+            ViewData["Photos"] = await _context.Photos.Where(p => p.TourId == id).ToListAsync();
             ViewData["Booked"] = isBooked;
             ViewData["Comments"] = comments;
 
@@ -113,10 +115,27 @@ namespace Tourism.Controllers_
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "guide,admin")]
-        public async Task<IActionResult> Create([Bind("TourId,CityId,Info,MainPhoto,Price,StartDate,EndDate,Capacity,CategoryId,StartPointName,StartPointGeo,Name,Guides")] Tour tour)
+        public async Task<IActionResult> Create([Bind("TourId,CityId,Info,MainPhoto,Price,StartDate,EndDate,Capacity,CategoryId,StartPointName,StartPointGeo,Name,Guides")] Tour tour, [FromForm] IFormFile? MainPhotoFile, List<IFormFile> Photos, List<string> UploadedPhotos)
         {
+
+            foreach (var photoBase64 in UploadedPhotos)
+            {
+                var photoBytes = Convert.FromBase64String(photoBase64);
+                var stream = new MemoryStream(photoBytes);
+                IFormFile photo = new FormFile(stream, 0, photoBytes.Length, Guid.NewGuid().ToString(), Guid.NewGuid().ToString()+".jpg");
+                Photos.Add(photo);
+            }
             if (ModelState.IsValid)
             {
+                if(MainPhotoFile != null)
+                {
+                    string folder = "Tours/MainPhotos/";
+                    string FileNameWithoutSpaces = string.Join("", MainPhotoFile.FileName.Split(" ", StringSplitOptions.RemoveEmptyEntries));
+                    folder +=  Guid.NewGuid().ToString() + "_" + FileNameWithoutSpaces;
+                    string ServerFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
+                    await MainPhotoFile.CopyToAsync(new FileStream(ServerFolder, FileMode.Create));
+                    tour.MainPhoto = "/"+folder;
+                }
                 tour.AvaibleTickets = tour.Capacity;
                 foreach(var guide in tour.Guides)
                 {
@@ -127,10 +146,35 @@ namespace Tourism.Controllers_
                                     GuideId = guide};
                     _context.Add(gd);
                 }
+
+                foreach(var photo in Photos)
+                {
+                    string folder = $"Tours/{tour.TourId}/";
+                    string FileNameWithoutSpaces = string.Join("", photo.FileName.Split(" ", StringSplitOptions.RemoveEmptyEntries));
+                    folder +=  Guid.NewGuid().ToString() + "_" + FileNameWithoutSpaces;
+                    string ServerFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
+                    Directory.CreateDirectory(Path.GetDirectoryName(ServerFolder));
+                    await photo.CopyToAsync(new FileStream(ServerFolder, FileMode.Create));
+                    string path = "/"+folder;
+                    var ph = new Photo{
+                        TourId = tour.TourId,
+                        Path = path,
+                        Tour = tour,
+                    };
+                    _context.Add(ph);
+                }
                 _context.Add(tour);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["UploadedPhotos"] = Photos.Select(p => 
+            {
+                using (var ms = new MemoryStream())
+                {
+                    p.CopyTo(ms);
+                    return ms.ToArray();
+                }
+            }).ToList();
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", tour.CategoryId);
             ViewData["CityId"] = new SelectList(_context.Cities, "CityId", "Name", tour.CityId);
             ViewData["Guides"] = new MultiSelectList(_context.Users, "Id", "UserName");
@@ -151,6 +195,22 @@ namespace Tourism.Controllers_
             {
                 return NotFound();
             }
+            var Photos = await _context.Photos.Where(p => p.TourId == id).ToListAsync();
+            ViewData["UploadedPhotos"] = Photos.Select(p =>
+            {
+                var filePath = Path.Combine(_webHostEnvironment.WebRootPath, p.Path.TrimStart('/'));
+                byte[] fileBytes;
+                using (var fileStream = System.IO.File.Open(filePath, FileMode.OpenOrCreate, FileAccess.Read, FileShare.ReadWrite))
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        fileStream.CopyTo(memoryStream);
+                        fileBytes = memoryStream.ToArray();
+                    }
+                }
+                return fileBytes;
+            }).ToList();
+            
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", tour.CategoryId);
             ViewData["CityId"] = new SelectList(_context.Cities, "CityId", "Name", tour.CityId);
             tour.Guides = _context.GuideTours.Where(gd => gd.TourId == id).Select(gd => gd.GuideId).ToList();
@@ -164,18 +224,62 @@ namespace Tourism.Controllers_
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "guide,admin")]
-        public async Task<IActionResult> Edit(int id, [Bind("TourId,CityId,Info,MainPhoto,Price,StartDate,EndDate,Capacity,AvaibleTickets,CategoryId,StartPointName,StartPointGeo,Name, Guides")] Tour tour)
+        public async Task<IActionResult> Edit(int id, [Bind("TourId,CityId,Info,MainPhoto,Price,StartDate,EndDate,Capacity,AvaibleTickets,CategoryId,StartPointName,StartPointGeo,Name, Guides")] Tour tour, [FromForm] IFormFile? MainPhotoFile, List<IFormFile> Photos, List<string> UploadedPhotos)
         {
             if (id != tour.TourId)
             {
                 return NotFound();
+            }
+            List<IFormFile>AllPhotos = new List<IFormFile>();
+
+            foreach (var photoBase64 in UploadedPhotos)
+            {
+                var photoBytes = Convert.FromBase64String(photoBase64);
+                var stream = new MemoryStream(photoBytes);
+                IFormFile photo = new FormFile(stream, 0, photoBytes.Length, Guid.NewGuid().ToString(), Guid.NewGuid().ToString()+".jpg");
+                AllPhotos.Add(photo);
+            }
+            foreach(var photo in Photos)
+            {
+                AllPhotos.Add(photo);
             }
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var GuideList = _context.GuideTours.Where(gd => gd.TourId == id).ToList();
+                    if(MainPhotoFile != null)
+                    {
+                        string folder = "Tours/MainPhotos/";
+                        string FileNameWithoutSpaces = string.Join("", MainPhotoFile.FileName.Split(" ", StringSplitOptions.RemoveEmptyEntries));
+                        folder +=  Guid.NewGuid().ToString() + "_" + FileNameWithoutSpaces;
+                        string ServerFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
+                        await MainPhotoFile.CopyToAsync(new FileStream(ServerFolder, FileMode.Create));
+                        tour.MainPhoto = "/"+folder;
+                    }
+                    var PhotoList = await _context.Photos.Where(ph => ph.TourId == id).ToListAsync();
+
+                    foreach(var photo in PhotoList)
+                    {
+                        _context.Remove(photo);
+                    }
+                    foreach(var photo in AllPhotos)
+                    {
+                        string folder = $"Tours/{tour.TourId}/";
+                        string FileNameWithoutSpaces = string.Join("", photo.FileName.Split(" ", StringSplitOptions.RemoveEmptyEntries));
+                        folder +=  Guid.NewGuid().ToString() + "_" + FileNameWithoutSpaces;
+                        string ServerFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
+                        Directory.CreateDirectory(Path.GetDirectoryName(ServerFolder));
+                        await photo.CopyToAsync(new FileStream(ServerFolder, FileMode.Create));
+                        string path = "/"+folder;
+                        var ph = new Photo{
+                            TourId = tour.TourId,
+                            Path = path,
+                        };
+                        _context.Add(ph);
+                    }
+
+                    var GuideList = await _context.GuideTours.Where(gd => gd.TourId == id).ToListAsync();
                     foreach(var gd in GuideList)
                     {
                         _context.Remove(gd);
@@ -201,6 +305,14 @@ namespace Tourism.Controllers_
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["UploadedPhotos"] = AllPhotos.Select(p => 
+            {
+                using (var ms = new MemoryStream())
+                {
+                    p.CopyTo(ms);
+                    return ms.ToArray();
+                }
+            }).ToList();
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", tour.CategoryId);
             ViewData["CityId"] = new SelectList(_context.Cities, "CityId", "Name", tour.CityId);
             tour.Guides = _context.GuideTours.Where(gd => gd.TourId == id).Select(gd => gd.GuideId).ToList();

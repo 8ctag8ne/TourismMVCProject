@@ -13,6 +13,9 @@ public partial class Region
 
     [Display(Name = "Назва")]
     public string? Name { get; set; }
+    
+    [Display(Name = "Фото")]
+    public string? MainPhoto { get; set; }
 
     public virtual ICollection<City> Cities { get; set; } = new List<City>();
 }

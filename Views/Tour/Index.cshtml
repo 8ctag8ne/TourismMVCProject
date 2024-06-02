@@ -54,7 +54,7 @@
         <div class="row g-0">
             <div class="col-sm-4">
                 <a asp-action="Details" asp-route-id="@item.TourId">
-                    <img src="@item.MainPhoto" class="img-fluid rounded-start object-fit-cover h-100" alt="@item.Name">
+                    <img src="@(item.MainPhoto ?? "resources/Logo.png")" class="img-fluid rounded-start object-fit-cover h-100 w-100" alt="@item.Name">
                 </a>
             </div>
             <div class="col-sm-8">
