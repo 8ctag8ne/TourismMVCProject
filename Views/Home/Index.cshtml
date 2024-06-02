@@ -1,18 +1,131 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "ToUAr";
 }
-<div class="row justify-content-center">
-    <div class="col-6"> 
-        <div class="card">
-    <div class="card-body">
-        <h4 class="card-title">Вітаємо на нашому сайті!</h4>
-        <p class="card-text">
-            ToUAr - це інноваційна платформа для планування незабутніх подорожей Україною. Ми пропонуємо широкий вибір турів по різних регіонах країни, від мальовничих Карпат до колоритних міст Центральної України. Наш сайт має зручний інтерфейс, що дозволяє легко обирати напрямок, місто та тур за вашими уподобаннями.</p>
-        <p class="card-text">
-            Унікальною особливістю нашого сервісу є система гідів. Після бронювання туру один з наших досвідчених місцевих провідників матиме можливість обрати саме вас своїм супутником у захопливій мандрівці. Ці пристрасні знавці рідного краю з радістю поділяться своїми знаннями та допоможуть вам насолодитися кожною миттю подорожі. На сайті ви також знайдете систему відгуків від інших мандрівників, особистий кабінет для зручного керування турами та бронюваннями, а також легку в користуванні систему створення власних ексклюзивних маршрутів.</p>
-        <p class="card-text">Приєднуйтесь до спільноти ToUAr і відкрийте для себе неповторну красу та культуру України!</p>
-    </div>
-</div>
+<div class="row justify-content-between my-3">
+    <div class="col-md-7 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h4 class="card-title">Вітаємо на нашому сайті!</h4>
+                <p class="card-text">
+                    ToUAr - це інноваційна платформа для планування незабутніх подорожей Україною. Ми пропонуємо широкий вибір турів по різних регіонах країни, від мальовничих Карпат до колоритних міст Центральної України. Наш сайт має зручний інтерфейс, що дозволяє легко обирати напрямок, місто та тур за вашими уподобаннями.
+                </p>
+                <p class="card-text">
+                    Унікальною особливістю нашого сервісу є система гідів. Після бронювання туру один з наших досвідчених місцевих провідників матиме можливість обрати саме вас своїм супутником у захопливій мандрівці. Ці пристрасні знавці рідного краю з радістю поділяться своїми знаннями та допоможуть вам насолодитися кожною миттю подорожі. На сайті ви також знайдете систему відгуків від інших мандрівників, особистий кабінет для зручного керування турами та бронюваннями, а також легку в користуванні систему створення власних ексклюзивних маршрутів.
+                </p>
+                <p class="card-text mt-auto">
+                    Приєднуйтесь до спільноти ToUAr і відкрийте для себе неповторну красу та культуру України!
+                </p>
+            </div>
+        </div>
     </div>
 
+    <div class="col-md-5 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <div id="photoCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        @if (ViewData["Photos"] != null)
+                        {
+                            var photos = (IEnumerable<Tourism.Photo>)ViewData["Photos"];
+                            var isFirst = true;
+                            foreach (var photo in photos)
+                            {
+                                <div class="carousel-item @(isFirst ? "active" : "")">
+                                    <a href="@Url.Action("Details", "Tour", new { id = photo.TourId })">
+                                        <div class="d-flex justify-content-center align-items-center" style="height: 400px;">
+                                            <img src="@photo.Path" class="img-fluid" alt="Photo" style="max-height: 100%; width: auto; object-fit: contain;">
+                                        </div>
+                                    </a>
+                                </div>
+                                isFirst = false;
+                            }
+                        }
+                        else
+                        {
+                            <div class="carousel-item active">
+                                <div class="d-flex justify-content-center align-items-center" style="height: 400px;">
+                                    <img src="Resources/Logo.png" class="img-fluid" alt="Photo" style="max-height: 100%; width: auto; object-fit: contain;">
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#photoCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card w-100 mb-3">
+    <div class="card-body">
+        <div>
+            <div class="row space-between">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4>Категорії</h4>
+                    <div class="d-flex">
+                        <a asp-controller="Category" asp-action="Index" class="btn btn-info">
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card w-100 mb-3">
+    <div class="card-body">
+        <div>
+            <div class="row space-between">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4>Регіони</h4>
+                    <div class="d-flex">
+                        <a asp-controller="Region" asp-action="Index" class="btn btn-info">
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card w-100 mb-3">
+    <div class="card-body">
+        <div>
+            <div class="row space-between">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4>Міста</h4>
+                    <div class="d-flex">
+                        <a asp-controller="City" asp-action="Index" class="btn btn-info">
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card w-100 mb-3">
+    <div class="card-body">
+        <div>
+            <div class="row space-between">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4>Тури</h4>
+                    <div class="d-flex">
+                        <a asp-controller="Tour" asp-action="Index" class="btn btn-info">
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
