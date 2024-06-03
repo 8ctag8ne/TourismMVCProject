@@ -176,7 +176,7 @@ namespace Tourism.Controllers_
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "User", new{id = id});
             }
             ViewData["IsGuide"] = await _userManager.IsInRoleAsync(user, "guide");
             ViewData["IsAdmin"] = await _userManager.IsInRoleAsync(user, "admin");

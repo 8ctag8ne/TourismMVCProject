@@ -1,47 +1,58 @@
 @model Tourism.Comment
-
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Details</title>
 </head>
 <body>
-
-<div>
-    <h4>Comment</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Text)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Text)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ParentComment)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ParentComment.CommentId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Tour)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tour.TourId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.User)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.User.Id)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.CommentId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Деталі коментаря</h5>
+        </div>
+        <div class="card-body">
+            <div class="d-flex">
+                <div class="me-3">
+                    <a asp-controller="User" asp-action="Details" asp-route-id="@Model.UserId" style="text-decoration: none;">
+                        @if (!string.IsNullOrEmpty(Model.User?.ProfilePhoto))
+                        {
+                            <img src="@Url.Content(Model.User.ProfilePhoto)" class="rounded-circle" alt="User Avatar" width="50" height="50">
+                        }
+                        else
+                        {
+                            <span class="rounded-circle bg-secondary d-flex align-items-center justify-content-center text-white" style="width: 50px; height: 50px;">
+                                @(Model.User?.UserName?.Substring(0, 1).ToUpper())
+                            </span>
+                        }
+                    </a>
+                </div>
+                <div>
+                    <a asp-controller="User" asp-action="Details" asp-route-id="@Model.UserId" style="text-decoration: none; color: black;">
+                        <h6 class="mb-0">@Model.User?.UserName</h6>
+                    </a>
+                    <p class="mb-0">@Model.Text</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="d-flex justify-content-between">
+                @* <div>
+                    <strong>Батьківський коментар:</strong>
+                    @if (Model.ParentComment != null)
+                    {
+                        <a asp-action="Details" asp-route-id="@Model.ParentComment.CommentId">@Model.ParentComment.CommentId</a>
+                    }
+                    else
+                    {
+                        <span>Немає</span>
+                    }
+                </div> *@
+                <div>
+                    <strong>Тур:</strong>
+                    <a asp-controller="Tour" asp-action="Details" asp-route-id="@Model.TourId">@Model.Tour?.Name</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

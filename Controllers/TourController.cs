@@ -101,11 +101,12 @@ namespace Tourism.Controllers_
 
         // GET: Tour/Create
         [Authorize(Roles = "guide,admin")]
-        public IActionResult Create()
+        public async Task<IActionResult> CreateAsync()
         {
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name");
             ViewData["CityId"] = new SelectList(_context.Cities, "CityId", "Name");
-            ViewData["Guides"] = new MultiSelectList(_context.Users, "Id", "UserName");
+            var adminUsers = await _userManager.GetUsersInRoleAsync("guide");
+            ViewData["Guides"] = new MultiSelectList(adminUsers, "Id", "UserName");
             return View();
         }
 
@@ -163,6 +164,7 @@ namespace Tourism.Controllers_
                     };
                     _context.Add(ph);
                 }
+                tour.Info = tour.Info?.Replace("\n", "<br / >");
                 _context.Add(tour);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -177,7 +179,8 @@ namespace Tourism.Controllers_
             }).ToList();
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", tour.CategoryId);
             ViewData["CityId"] = new SelectList(_context.Cities, "CityId", "Name", tour.CityId);
-            ViewData["Guides"] = new MultiSelectList(_context.Users, "Id", "UserName");
+            var adminUsers = await _userManager.GetUsersInRoleAsync("guide");
+            ViewData["Guides"] = new MultiSelectList(adminUsers, "Id", "UserName");
             return View(tour);
         }
 
@@ -210,11 +213,13 @@ namespace Tourism.Controllers_
                 }
                 return fileBytes;
             }).ToList();
+            tour.Info = tour.Info?.Replace("<br / >", "\n");
             
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", tour.CategoryId);
             ViewData["CityId"] = new SelectList(_context.Cities, "CityId", "Name", tour.CityId);
             tour.Guides = _context.GuideTours.Where(gd => gd.TourId == id).Select(gd => gd.GuideId).ToList();
-            ViewData["Guides"] = new MultiSelectList(_context.Users, "Id", "UserName");
+            var adminUsers = await _userManager.GetUsersInRoleAsync("guide");
+            ViewData["Guides"] = new MultiSelectList(adminUsers, "Id", "UserName");
             return View(tour);
         }
 
@@ -289,6 +294,7 @@ namespace Tourism.Controllers_
                         var gd = new GuideTour{TourId = id, GuideId = guide};
                         _context.Add(gd);
                     }
+                    tour.Info = tour.Info?.Replace("\n", "<br / >");
                     _context.Update(tour);
                     await _context.SaveChangesAsync();
                 }
@@ -316,7 +322,8 @@ namespace Tourism.Controllers_
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", tour.CategoryId);
             ViewData["CityId"] = new SelectList(_context.Cities, "CityId", "Name", tour.CityId);
             tour.Guides = _context.GuideTours.Where(gd => gd.TourId == id).Select(gd => gd.GuideId).ToList();
-            ViewData["Guides"] = new MultiSelectList(_context.Users, "Id", "UserName");
+            var adminUsers = await _userManager.GetUsersInRoleAsync("guide");
+            ViewData["Guides"] = new MultiSelectList(adminUsers, "Id", "UserName");
             return View(tour);
         }
 
