@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PdhYWnfM04k8WbXddvSc6Cm0WUV6ofQ07WR1kR/Q2lQnxp6gKCfWg+2T8KnlKkTuRzqyt76mnGxJDeNk0TUqiQ==",
+  "dgSpecHash": "5wYzUP8OWtjMZFAbQjp2L+/wtXOQvjZklQkDRGpB1oXh1KgC4fUGR7sZkHQmGCQnidgcd+G34GnNydrHsF5Y6A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\Tourism.csproj",
+  "projectFilePath": "c:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\Tourism.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nazar\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\nazar\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\Tourism.csproj": {}
+    "c:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\Tourism.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\Tourism.csproj": {
+    "c:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\Tourism.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\Tourism.csproj",
+        "projectUniqueName": "c:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\Tourism.csproj",
         "projectName": "Tourism",
-        "projectPath": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\Tourism.csproj",
+        "projectPath": "c:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\Tourism.csproj",
         "packagesPath": "C:\\Users\\nazar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\Tourism\\obj\\",
+        "outputPath": "c:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nazar\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -20,7 +20,6 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
