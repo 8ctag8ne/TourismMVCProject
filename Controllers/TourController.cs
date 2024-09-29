@@ -95,6 +95,12 @@ namespace Tourism.Controllers_
             ViewData["Photos"] = await _context.Photos.Where(p => p.TourId == id).ToListAsync();
             ViewData["Booked"] = isBooked;
             ViewData["Comments"] = comments;
+            ViewData["AcceptedTickets"] = await _context.Orders.Where(o => o.TourId == id && o.Status == StatusHelper.GetStatus(StatusEnum.Accepted)).CountAsync();
+            ViewData["ProcessedTickets"] = await _context.Orders.Where(o => o.TourId == id && 
+            (o.Status == StatusHelper.GetStatus(StatusEnum.Posted) || 
+            o.Status == StatusHelper.GetStatus(StatusEnum.InReview)))
+            .CountAsync();
+
 
             return View(tour);
         }

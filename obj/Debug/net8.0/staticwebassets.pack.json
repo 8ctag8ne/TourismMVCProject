@@ -73,6 +73,10 @@
       "PackagePath": "staticwebassets\\Regions\\MainPhotos\\553932ac-65a6-4e4b-83f8-8031b9a74c43_ArticleImage_117815.jpg"
     },
     {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Regions\\MainPhotos\\5792da29-6b05-4a6a-b36e-f1cf135cfbd1_завантаження.jpeg",
+      "PackagePath": "staticwebassets\\Regions\\MainPhotos\\5792da29-6b05-4a6a-b36e-f1cf135cfbd1_завантаження.jpeg"
+    },
+    {
       "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Regions\\MainPhotos\\6b5a9803-3662-424a-90d8-bf207f093a92_2b3b2731fd322bda19add7b47a59fcf4.jpg",
       "PackagePath": "staticwebassets\\Regions\\MainPhotos\\6b5a9803-3662-424a-90d8-bf207f093a92_2b3b2731fd322bda19add7b47a59fcf4.jpg"
     },
@@ -113,8 +117,20 @@
       "PackagePath": "staticwebassets\\Regions\\MainPhotos\\e9700d11-4d24-445a-99f4-2bcdf70349b7_2c225g5j56c51.jpg"
     },
     {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Regions\\MainPhotos\\e9c8a239-f748-4824-9e8f-eab5f406bf33_slobozhanshchyna.webp",
+      "PackagePath": "staticwebassets\\Regions\\MainPhotos\\e9c8a239-f748-4824-9e8f-eab5f406bf33_slobozhanshchyna.webp"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Regions\\MainPhotos\\ef37259a-031b-4013-aaa6-7715b28000e6_depositphotos_115606024-stock-photo-the-monastery-of-carmelites-in.jpg",
+      "PackagePath": "staticwebassets\\Regions\\MainPhotos\\ef37259a-031b-4013-aaa6-7715b28000e6_depositphotos_115606024-stock-photo-the-monastery-of-carmelites-in.jpg"
+    },
+    {
       "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Regions\\MainPhotos\\f0935762-bc92-4c86-9623-f41eedd4d7f7_2b3b2731fd322bda19add7b47a59fcf4.jpg",
       "PackagePath": "staticwebassets\\Regions\\MainPhotos\\f0935762-bc92-4c86-9623-f41eedd4d7f7_2b3b2731fd322bda19add7b47a59fcf4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Regions\\MainPhotos\\f38ca506-8206-4508-8f10-37ccd46609d6_naddniprianshchyna_red.jpg",
+      "PackagePath": "staticwebassets\\Regions\\MainPhotos\\f38ca506-8206-4508-8f10-37ccd46609d6_naddniprianshchyna_red.jpg"
     },
     {
       "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Regions\\MainPhotos\\f4ac2221-e635-4bc8-97b3-2a2de4f9278b_AoUsagi-Tohsaka-Rin-Fate-(series)-Anime-6566026.jpeg",
@@ -281,12 +297,20 @@
       "PackagePath": "staticwebassets\\Tours\\1\\2bb37107-7b24-42fa-bc81-270f3cf80ba5_Park-kulturi-ta-vidpochinku-im.-YU.O.-Gagarina-m.-ZHitomir-13.jpg"
     },
     {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Tours\\1\\452f5afd-0c07-4724-99a2-c9ad19980dba_52386e60-9f9d-4e72-ac3e-dc73637fb7e1.jpg",
+      "PackagePath": "staticwebassets\\Tours\\1\\452f5afd-0c07-4724-99a2-c9ad19980dba_52386e60-9f9d-4e72-ac3e-dc73637fb7e1.jpg"
+    },
+    {
       "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Tours\\1\\58bed590-8217-4e7a-aef8-58a711e8d0b2_2aca61b3-e13a-40fb-8b18-cda2e9ffb3e5.jpg",
       "PackagePath": "staticwebassets\\Tours\\1\\58bed590-8217-4e7a-aef8-58a711e8d0b2_2aca61b3-e13a-40fb-8b18-cda2e9ffb3e5.jpg"
     },
     {
       "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Tours\\1\\60508151-b718-476d-8a42-0479b8568b9a_7edce68c-71e5-4815-8051-6ba37d7da212.jpg",
       "PackagePath": "staticwebassets\\Tours\\1\\60508151-b718-476d-8a42-0479b8568b9a_7edce68c-71e5-4815-8051-6ba37d7da212.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Tours\\1\\6c5b12a4-1a7f-4e72-b7b3-df27f1d83691_d4b9ca49-28a9-488e-b4c1-1f52bfc5c67c.jpg",
+      "PackagePath": "staticwebassets\\Tours\\1\\6c5b12a4-1a7f-4e72-b7b3-df27f1d83691_d4b9ca49-28a9-488e-b4c1-1f52bfc5c67c.jpg"
     },
     {
       "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Tours\\1\\73ffee84-72a9-4e13-ae9b-628be9122b85_05ef0029-09e8-483a-84e5-9c9eb882c479.jpg",
@@ -301,12 +325,20 @@
       "PackagePath": "staticwebassets\\Tours\\1\\80ccf976-61d4-4514-a797-bf4222565bb9_307b3261-4c58-44f0-97a8-673c2cd44b4a.jpg"
     },
     {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Tours\\1\\82a26501-92ef-4d2b-b371-4a683a97baef_d3c0a0c3-ea03-4297-8e28-c2a59ad75cf6.jpg",
+      "PackagePath": "staticwebassets\\Tours\\1\\82a26501-92ef-4d2b-b371-4a683a97baef_d3c0a0c3-ea03-4297-8e28-c2a59ad75cf6.jpg"
+    },
+    {
       "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Tours\\1\\8a6432a5-8d38-4f51-a03d-dd730d81e86c_1170x580-5ee9f0319c79a.webp",
       "PackagePath": "staticwebassets\\Tours\\1\\8a6432a5-8d38-4f51-a03d-dd730d81e86c_1170x580-5ee9f0319c79a.webp"
     },
     {
       "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Tours\\1\\8c680efe-6591-48f3-9df7-fb46fd431047_92cda5c6-f56f-4fbc-83a1-fb8758c1bb99.jpg",
       "PackagePath": "staticwebassets\\Tours\\1\\8c680efe-6591-48f3-9df7-fb46fd431047_92cda5c6-f56f-4fbc-83a1-fb8758c1bb99.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Tours\\1\\8fd2b4f0-d265-4d85-b746-527ea34310a8_dc1dffd5-d55f-480e-8786-fdb9c73087e3.jpg",
+      "PackagePath": "staticwebassets\\Tours\\1\\8fd2b4f0-d265-4d85-b746-527ea34310a8_dc1dffd5-d55f-480e-8786-fdb9c73087e3.jpg"
     },
     {
       "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Tours\\1\\a578fedd-77ea-4c7f-ba5b-d7fec2ec02b5_aa0242dd-fcad-4ec6-afeb-fba98a1e799b.jpg",
@@ -333,8 +365,16 @@
       "PackagePath": "staticwebassets\\Tours\\2\\20059c96-6e1d-4793-befd-0b6f7496a146_Подол.png"
     },
     {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Tours\\2\\205e4df1-3377-422a-aab3-2ca98f14b87f_420b9efc-9988-46a2-962d-08f4a4f7e484.jpg",
+      "PackagePath": "staticwebassets\\Tours\\2\\205e4df1-3377-422a-aab3-2ca98f14b87f_420b9efc-9988-46a2-962d-08f4a4f7e484.jpg"
+    },
+    {
       "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Tours\\2\\226018e8-34ed-48a7-9e73-7c9975d63b22_387800447_256698047363840_1793606968940718777_n.jpg",
       "PackagePath": "staticwebassets\\Tours\\2\\226018e8-34ed-48a7-9e73-7c9975d63b22_387800447_256698047363840_1793606968940718777_n.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Tours\\2\\229f3572-2c9f-471e-b5d3-e5732cacbd49_2a7126da-d5e9-404f-8a10-9f5572d59652.jpg",
+      "PackagePath": "staticwebassets\\Tours\\2\\229f3572-2c9f-471e-b5d3-e5732cacbd49_2a7126da-d5e9-404f-8a10-9f5572d59652.jpg"
     },
     {
       "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Tours\\2\\4b1fc12d-0d30-4cfa-9f38-9c1f61324717_dc05c1e6-28bc-4b09-934d-f12faac86a88.jpg",
@@ -351,6 +391,10 @@
     {
       "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Tours\\2\\8f1b0163-6461-46b6-9787-b9c1f6208af5_55909ee8-7e91-4ec2-88e7-0842eb4122e9.jpg",
       "PackagePath": "staticwebassets\\Tours\\2\\8f1b0163-6461-46b6-9787-b9c1f6208af5_55909ee8-7e91-4ec2-88e7-0842eb4122e9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Tours\\2\\b65d8fc6-e32c-4127-955f-1a5eeff7d540_2dfc87a4-e0c9-4747-8d40-e11b27a67904.jpg",
+      "PackagePath": "staticwebassets\\Tours\\2\\b65d8fc6-e32c-4127-955f-1a5eeff7d540_2dfc87a4-e0c9-4747-8d40-e11b27a67904.jpg"
     },
     {
       "Id": "C:\\Users\\nazar\\OneDrive\\Рабочий стол\\унік\\Прога\\TourismMVCProject\\wwwroot\\Tours\\2\\bddac549-0c14-4308-b378-a5a8d3991935_5a3b86e9-7413-4f52-8bb6-600adab5939d.jpg",

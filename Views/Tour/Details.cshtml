@@ -7,6 +7,8 @@
     var IsBooked = (bool)ViewData["Booked"];
     IEnumerable<Tourism.Comment> Comments = ViewData["Comments"] as IEnumerable<Tourism.Comment>;
     IEnumerable<Tourism.Photo> Photos  =  ViewData["Photos"] as IEnumerable<Tourism.Photo>;
+    var AcceptedTickets = (int)ViewData["AcceptedTickets"];
+    var ProcessedTickets = (int)ViewData["ProcessedTickets"];
 }
 <!DOCTYPE html>
 
@@ -75,6 +77,75 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h5>Статус квитків</h5>
+    </div>
+    <div class="card-body">
+        @{
+            var totalTickets = AcceptedTickets + ProcessedTickets + Model.AvaibleTickets;
+            var acceptedPercentage = (totalTickets > 0) ? (AcceptedTickets * 100 / totalTickets) : 0;
+            var processedPercentage = (totalTickets > 0) ? (ProcessedTickets * 100 / totalTickets) : 0;
+            var availablePercentage = (totalTickets > 0) ? (Model.AvaibleTickets * 100 / totalTickets) : 0;
+        }
+        <div class="progress" style="height: 25px;">
+            @if (acceptedPercentage > 0)
+            {
+                <div class="progress-bar bg-success" 
+                     role="progressbar" 
+                     style="width: @acceptedPercentage%;" 
+                     aria-valuenow="@acceptedPercentage" 
+                     aria-valuemin="0" 
+                     aria-valuemax="100">
+                    @if(acceptedPercentage >= 10)
+                    {
+                        @AcceptedTickets
+                    }
+                </div>
+            }
+            @if (processedPercentage > 0)
+            {
+                <div class="progress-bar bg-warning" 
+                     role="progressbar" 
+                     style="width: @processedPercentage%;" 
+                     aria-valuenow="@processedPercentage" 
+                     aria-valuemin="0" 
+                     aria-valuemax="100">
+                    @if(processedPercentage >= 10)
+                    {
+                        @ProcessedTickets
+                    }
+                </div>
+            }
+            @if (availablePercentage > 0)
+            {
+                <div class="progress-bar bg-info" 
+                     role="progressbar" 
+                     style="width: @availablePercentage%;" 
+                     aria-valuenow="@availablePercentage" 
+                     aria-valuemin="0" 
+                     aria-valuemax="100">
+                    @if(availablePercentage >= 10)
+                    {
+                        @Model.AvaibleTickets
+                    }
+                </div>
+            }
+        </div>
+        <div class="mt-2 d-flex justify-content-between">
+            <div>
+                <span class="badge bg-success">Підтверджено: @AcceptedTickets</span>
+            </div>
+            <div>
+                <span class="badge bg-warning text-dark">В обробці: @ProcessedTickets</span>
+            </div>
+            <div>
+                <span class="badge bg-info">Доступно: @Model.AvaibleTickets</span>
+            </div>
+        </div>
     </div>
 </div>
 
