@@ -56,14 +56,14 @@
         <div id="tourCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item my-3 active">
-                <img src="@Html.DisplayFor(model => model.MainPhoto)" class="d-block w-100" alt="Main Photo">
+                <img src="@Html.DisplayFor(model => model.MainPhoto)" class="d-block w-100" alt="Main">
             </div>
             @if (Photos != null && Photos.Count() > 0 )
             {
                 @foreach (var photo in Photos)
                 {
                     <div class="carousel-item my-3">
-                        <img src="@photo.Path" class="d-block w-100" alt="Photo">
+                        <img src="@photo.Path" class="d-block w-100" alt="Phot">
                     </div>
                 }
             }

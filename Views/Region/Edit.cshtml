@@ -29,7 +29,7 @@
             </div>
             <input type="hidden" asp-for="MainPhoto" />
             <div class="form-group my-2">
-                <div class="card flex-row" style="box-shadow: none;"><img class="card-img-left example-card-img-responsive" id="preview" src="@(Model.MainPhoto ?? "/resources/LogoSquared.png")" alt="Profile Picture" style="max-width: 200px; max-height: 200px;" />
+                <div class="card flex-row" style="box-shadow: none;"><img class="card-img-left example-card-img-responsive" id="preview" src="@(Model.MainPhoto ?? "/resources/LogoSquared.png")" alt="Profile" style="max-width: 200px; max-height: 200px;" />
                     <div class="card-body">
                         <h4 class="card-title h5 h4-sm"><label for="formFile" class="form-label">Фото регіону</label></h4>
                         <p class="card-text"><input name="MainPhotoFile" class="form-control" type="file" id="formFile" accept="image/*" onchange="previewImage(event)">

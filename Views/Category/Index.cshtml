@@ -18,6 +18,10 @@
     </style>
 </head>
 <body>
+    <div class="alert @(ViewBag.DataSource == "Cache" ? "alert-success" : "alert-info")">
+        <strong>Джерело даних:</strong> @ViewBag.DataSource<br />
+        <strong>Час виконання:</strong> @ViewBag.ExecutionTime мс
+    </div>
     <div class="card w-100 mb-4">
         <div class="card-body">
             <div>

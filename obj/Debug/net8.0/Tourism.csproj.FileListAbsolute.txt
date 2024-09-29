@@ -520,3 +520,7 @@ C:\Users\nazar\OneDrive\Рабочий стол\унік\Прога\TourismMVCPr
 C:\Users\nazar\OneDrive\Рабочий стол\унік\Прога\TourismMVCProject\obj\Debug\net8.0\Tourism.pdb
 C:\Users\nazar\OneDrive\Рабочий стол\унік\Прога\TourismMVCProject\obj\Debug\net8.0\Tourism.genruntimeconfig.cache
 C:\Users\nazar\OneDrive\Рабочий стол\унік\Прога\TourismMVCProject\obj\Debug\net8.0\ref\Tourism.dll
+C:\Users\nazar\OneDrive\Рабочий стол\унік\Прога\TourismMVCProject\bin\Debug\net8.0\Azure.Storage.Blobs.dll
+C:\Users\nazar\OneDrive\Рабочий стол\унік\Прога\TourismMVCProject\bin\Debug\net8.0\Azure.Storage.Common.dll
+C:\Users\nazar\OneDrive\Рабочий стол\унік\Прога\TourismMVCProject\bin\Debug\net8.0\System.ClientModel.dll
+C:\Users\nazar\OneDrive\Рабочий стол\унік\Прога\TourismMVCProject\bin\Debug\net8.0\System.IO.Hashing.dll

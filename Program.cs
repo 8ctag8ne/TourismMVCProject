@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Tourism;
+using TourismMVCProject.Services.Implementations;
+using TourismMVCProject.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +20,9 @@ builder.Services.ConfigureApplicationCookie(options =>
 {
     options.AccessDeniedPath = "/AccessDenied/Index";
 });
-
+// builder.Services.AddScoped<IFileService, LocalFileService>();
+builder.Services.AddScoped<IFileService, BlobStorageService>();
+builder.Services.AddMemoryCache();
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
